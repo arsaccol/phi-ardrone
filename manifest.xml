@@ -1,0 +1,30 @@
+<package>
+  <description brief="phi_ardrone">
+	 Package for the Parrot AR.Drone 2.0 
+	  Phi-Robotics Group
+	  Institute of Informatics,
+	  Federal University of Rio Grande do Sul,
+	  Brazil. 
+	 
+     Package: phi_ardrone
+     Nodes: phi_keyboard_pilot 
+     		phi_redball_tracker
+
+  </description>
+  <author>Alexandre R. Saccol</author>
+  <author>Flora F. Branchi</author>
+  <license>GPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/phi_ardrone</url>
+  <depend package="roscpp"/>
+  <depend package="std_srvs"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="ardrone_autonomy"/>
+  <depend package="cv_bridge"/>
+  <depend package="opencv2"/>
+  <depend package="image_transport"/>
+
+</package>
+
+

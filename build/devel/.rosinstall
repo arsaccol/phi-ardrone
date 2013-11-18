@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/alexandre/ros_ws/sandbox/phi_ardrone/build/devel/setup.sh
