@@ -1,4 +1,6 @@
+
 #include "../include/phi_ardrone/phi_locate_circle.h"
+#include "../include/phi_ardrone/phi_follower.h"
 #include "ros/ros.h"
 
 #ifndef NULL
@@ -6,7 +8,7 @@
 #endif
 
 using namespace std;
-
+/*
 void camera_callback(const sensor_msgs::Image::ConstPtr& ros_img);
 
 int main(int argc, char** argv)
@@ -47,3 +49,14 @@ void camera_callback(const sensor_msgs::Image::ConstPtr& ros_img)
 }
 
 
+*/
+
+
+int main(int argc, char** argv)
+{
+	ros::init(argc, argv, "phi_locate_circle");
+	AR_Drone_Follower flw;
+
+
+	return 0;
+}

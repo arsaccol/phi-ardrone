@@ -331,8 +331,10 @@ cv::Point AR_Drone_LocateCircle::_FindWithMoment()
 
 }
 
-cv::Point AR_Drone_LocateCircle::_Iteration()
+cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 {
+	_image = frame;
+
     Point center_Iteration;
 
     _FindChromaticityRange();
@@ -341,10 +343,10 @@ cv::Point AR_Drone_LocateCircle::_Iteration()
 
     _ShowQuadrants();
 
-    imshow("Display window", _image);
-    imshow("Found Colors", _new_image);
+	//imshow("Display window", _image);
+	//imshow("Found Colors", _new_image);
 
-    imshow("Selected Range", _shown_color_range);
+	//imshow("Selected Range", _shown_color_range);
 
     return center_Iteration;
 

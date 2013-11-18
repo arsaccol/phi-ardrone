@@ -18,6 +18,7 @@ public:
 
     AR_Drone_LocateCircle();
     ~AR_Drone_LocateCircle();
+	cv::Point Iteration(Mat &frame);
 
 private:
     void _CalculateValues();
@@ -34,7 +35,7 @@ private:
     void _CreateTrackbarsAndWindows();
     cv::Point _FindWithHough();
     cv::Point _FindWithMoment();
-    cv::Point _Iteration();
+
     void _OnStart();
 
 private:

@@ -2,20 +2,31 @@
 #define PHI_FOLLOWER_H
 
 #include "ros/ros.h"
+#include "std_msgs/Empty.h"
 #include "sensor_msgs/Image.h"
+#include "sensor_msgs/image_encodings.h"
+#include "image_transport/image_transport.h"
 #include "cv_bridge/cv_bridge.h"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/video/video.hpp"
+#include "opencv2/core/core.hpp"
+
+#include "phi_locate_circle.h"
+
 class AR_Drone_Follower
 {
 public:
 	AR_Drone_Follower();
 	~AR_Drone_Follower();
-
+	void Run();
 private:
-	cv::VideoCapture camera;
+	static void camera_subCb(const sensor_msgs::ImageConstPtr& msg);
+private:
+	bool shouldRun;
+	// cv::VideoCapture camera;
 	ros::NodeHandle node;
-	ros::Subscriber subscriber;
+	ros::Subscriber camera_sub;
+
 
 
 	cv_bridge::CvImage frame;
