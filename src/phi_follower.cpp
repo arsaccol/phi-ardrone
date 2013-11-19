@@ -10,7 +10,7 @@ AR_Drone_Follower::AR_Drone_Follower()
 
 
 
-	camera_sub = node.subscribe("ardrone/image_raw", 200, camera_subCb);
+	camera_sub = node.subscribe("ardrone/image_raw", 200, _camera_subCb);
 	ros::ServiceClient toggleCam_client = node.serviceClient<std_srvs::Empty>("ardrone/togglecam");
 	// toggleCam_client.call(toggleCamMsg);
 	ros::spin();
@@ -23,7 +23,7 @@ AR_Drone_Follower::~AR_Drone_Follower()
 
 }
 
-void AR_Drone_Follower::camera_subCb(const sensor_msgs::ImageConstPtr &msg)
+void AR_Drone_Follower::_camera_subCb(const sensor_msgs::ImageConstPtr &msg)
 {
 	static AR_Drone_LocateCircle locator;
 
@@ -45,7 +45,12 @@ void AR_Drone_Follower::camera_subCb(const sensor_msgs::ImageConstPtr &msg)
 		origin.y = frame.rows / 2;
 
 	detected_center = locator.Iteration(frame);
-	cv::line(frame, origin, detected_center, blueColor, 1, 8);
+	if(detected_center.x == 0 && detected_center.y == 0)
+	{
+		detected_center.x = frame.cols / 2;
+		detected_center.y = frame.rows / 2;
+	}
+	cv::line(frame, origin, detected_center, blueColor, 2, 8);
 
 	detected_center.x = frame.cols / 2;
 	detected_center.y = frame.rows / 2;

@@ -20,10 +20,10 @@ AR_Drone_LocateCircle::AR_Drone_LocateCircle()
 
     _pi = M_PI;
 
-    _omega  = 55;
+	_omega  = 39;
     _range = 6;
-    _min_saturation = 50;
-    _max_saturation = 100;
+	_min_saturation = 30;
+	_max_saturation = 45;
 
 	_OnStart();
 
@@ -348,7 +348,7 @@ cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 	imshow("Display window", _image);
 	imshow("Found Colors", _new_image);
 
-	//imshow("Selected Range", _shown_color_range);
+	// imshow("Selected Range", _shown_color_range);
 
     return center_Iteration;
 
@@ -356,7 +356,7 @@ cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 
 void AR_Drone_LocateCircle::_OnStart()
 {
-    _shown_color_range = imread("_color_range.jpg", CV_LOAD_IMAGE_COLOR);
+	_shown_color_range = imread("color_range.jpg", CV_LOAD_IMAGE_COLOR);
     _CreateTrackbarsAndWindows();
 
      _CalculateValues();
