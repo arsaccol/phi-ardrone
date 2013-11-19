@@ -25,6 +25,8 @@ AR_Drone_LocateCircle::AR_Drone_LocateCircle()
     _min_saturation = 50;
     _max_saturation = 100;
 
+	_OnStart();
+
 }
 
 AR_Drone_LocateCircle::~AR_Drone_LocateCircle()
@@ -275,13 +277,13 @@ createTrackbar("Max Saturation","Control Bars",&_max_saturation,255,_onTrackChan
 cv::Point AR_Drone_LocateCircle::_FindWithHough()
 {
 
-    Point center;
+	Point center;
 
-    Mat src_gray;
+	Mat src_gray;
 
-    cvtColor (_new_image, src_gray, CV_BGR2GRAY );
+	cvtColor (_new_image, src_gray, CV_BGR2GRAY );
 
-   blur( src_gray, src_gray, Size(10,10) );
+	blur( src_gray, src_gray, Size(10,10) );
 
     HoughCircles(src_gray, _circles, CV_HOUGH_GRADIENT, 2, 20, _InnerCannyThreshold, _CircleDetectionThreshold, _min_rad, _max_rad);
 
@@ -335,7 +337,7 @@ cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 {
 	_image = frame;
 
-    Point center_Iteration;
+	Point center_Iteration;
 
     _FindChromaticityRange();
 
@@ -343,8 +345,8 @@ cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 
     _ShowQuadrants();
 
-	//imshow("Display window", _image);
-	//imshow("Found Colors", _new_image);
+	imshow("Display window", _image);
+	imshow("Found Colors", _new_image);
 
 	//imshow("Selected Range", _shown_color_range);
 
