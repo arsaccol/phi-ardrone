@@ -36,7 +36,7 @@ private:
     cv::Point _FindWithHough();
     cv::Point _FindWithMoment();
 
-    void _OnStart();
+	void _OnStart();
 
 private:
 

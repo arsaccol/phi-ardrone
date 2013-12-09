@@ -3,6 +3,7 @@
 
 #include "ros/ros.h"
 #include "std_msgs/Empty.h"
+#include "std_srvs/Empty.h"
 #include "sensor_msgs/Image.h"
 #include "sensor_msgs/image_encodings.h"
 #include "image_transport/image_transport.h"
@@ -20,16 +21,18 @@ public:
 	~AR_Drone_Follower();
 	void Run();
 private:
-	static void camera_subCb(const sensor_msgs::ImageConstPtr& msg);
+	static void _camera_subCb(const sensor_msgs::ImageConstPtr& msg);
 private:
 	bool shouldRun;
+
 	// cv::VideoCapture camera;
 	ros::NodeHandle node;
 	ros::Subscriber camera_sub;
 
+	ros::ServiceServer srvs_trackingStart;
+	ros::ServiceServer srvs_trackingStop;
 
-
-	cv_bridge::CvImage frame;
+	//cv_bridge::CvImage frame;
 
 
 };

@@ -13,7 +13,7 @@ public:
     ~AR_Drone();
 
     void Takeoff();
-    void Land();
+	void Land();
 
     void moveForward(float speed);
     void moveBackward(float speed);
@@ -36,11 +36,15 @@ private:
     ros::NodeHandle Node;
     int pub_rate;
     bool shouldQuit;
+	bool tracking;
 
 
     ros::Publisher pub_Takeoff;
     ros::Publisher pub_Landing;
     ros::Publisher pub_Velocity;
+
+	ros::ServiceClient srvc_trackingStart;
+	ros::ServiceClient srvc_trackingStop;
 
     std_msgs::Empty empty_msg;
     geometry_msgs::Twist commandVelocity_msg;

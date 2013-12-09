@@ -7,19 +7,22 @@ AR_Drone_Follower::AR_Drone_Follower()
 
 	std_srvs::Empty toggleCamMsg;
 
-
+	//_authorization_sub = node.subscribe("phi_ardrone/tracking", 200, void);
 
 
 	camera_sub = node.subscribe("ardrone/image_raw", 200, _camera_subCb);
 	ros::ServiceClient toggleCam_client = node.serviceClient<std_srvs::Empty>("ardrone/togglecam");
-	// toggleCam_client.call(toggleCamMsg);
+	toggleCam_client.call(toggleCamMsg);
+
+	// HERE
+	srvs_trackingStart = node.advertiseService<std_srvs::Empty>("phi_ardrone/tracking");
+
 	ros::spin();
-
-
 }
 
 AR_Drone_Follower::~AR_Drone_Follower()
 {
+
 
 }
 

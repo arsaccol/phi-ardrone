@@ -7,18 +7,25 @@
 #include "sensor_msgs/Imu.h"
 #include "sensor_msgs/Image.h"
 #include "geometry_msgs/Twist.h"
+#include "std_srvs/Empty.h"
 
 AR_Drone::AR_Drone()
 {
 
     //ros::init(argc, argv, "ar_pilot_main");
     shouldQuit = false;
+	tracking = false;
     pub_rate = 200; // Hz
     pub_Takeoff = Node.advertise<std_msgs::Empty>("ardrone/takeoff", pub_rate);
     pub_Landing = Node.advertise<std_msgs::Empty>("ardrone/land", pub_rate);
-    pub_Velocity = Node.advertise<geometry_msgs::Twist>("cmd_vel", pub_rate);
+	pub_Velocity = Node.advertise<geometry_msgs::Twist>("cmd_vel", pub_rate);
+
+	srvc_trackingStart = Node.serviceClient<std_srvs::Empty>("phi_ardrone/tracking");
 
 
+
+// Should be advertised only when a "tracking" key is pressed.
+//	pub_Tracking = Node.advertise<std_msgs::Empty>("phi_ardrone/tracking", pub_rate);
 
 }
 
@@ -89,7 +96,7 @@ void AR_Drone::setVerticalVelocityDown(float speed)
     //	if(speed >= -1.0f && speed <= 0.0f)
     {
         commandVelocity_msg.linear.z = speed;
-        pub_Velocity.publish(commandVelocity_msg);
+		pub_Velocity.publish(commandVelocity_msg);
     }
 }
 
@@ -128,7 +135,7 @@ void AR_Drone::switchOnKeyDown()
 
     case SDLK_SPACE:
         std::cout << "Taking off" << std::endl;
-        Takeoff();
+		Takeoff();
         break;
 
     case SDLK_l:
@@ -156,7 +163,7 @@ void AR_Drone::switchOnKeyDown()
         std::cout << "Moving backward" << std::endl;
         break;
 
-    case SDLK_a:
+	case SDLK_a:
         turnLeft(0.7);
         std::cout << "Turning left" << std::endl;
         break;
@@ -164,6 +171,20 @@ void AR_Drone::switchOnKeyDown()
     case SDLK_d:
         turnRight(-0.7);
         std::cout << "Turning right" << std::endl;
+        break;
+
+	case SDLK_f:
+		if(!tracking)
+		{
+			tracking = true;
+		}
+		else
+		{
+			tracking = false;
+		}
+		break;
+
+    default:
         break;
     }
 }
@@ -188,6 +209,8 @@ void AR_Drone::switchOnKeyUp()
     case SDLK_RIGHT:
         //			std::cout << "Resetting horizontal velocity" << std::endl;
         resetVelocityH();
+        break;
+    default:
         break;
     }
 }

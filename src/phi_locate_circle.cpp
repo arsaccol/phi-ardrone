@@ -21,7 +21,7 @@ AR_Drone_LocateCircle::AR_Drone_LocateCircle()
     _pi = M_PI;
 
 	_omega  = 39;
-    _range = 6;
+	_range = 6;
 	_min_saturation = 30;
 	_max_saturation = 45;
 
@@ -341,7 +341,7 @@ cv::Point AR_Drone_LocateCircle::Iteration(cv::Mat& frame)
 
     _FindChromaticityRange();
 
-    center_Iteration = _FindWithHough();
+	center_Iteration = _FindWithMoment();
 
     _ShowQuadrants();
 

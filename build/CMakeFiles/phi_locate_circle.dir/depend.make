@@ -88,6 +88,9 @@ CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include
 CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/sensor_msgs/image_encodings.h
 CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/std_msgs/Empty.h
 CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/std_msgs/Header.h
+CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/std_srvs/Empty.h
+CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/std_srvs/EmptyRequest.h
+CMakeFiles/phi_locate_circle.dir/src/phi_follower.cpp.o: /opt/ros/groovy/include/std_srvs/EmptyResponse.h
 
 CMakeFiles/phi_locate_circle.dir/src/phi_locate_circle.cpp.o: ../src/../include/phi_ardrone/phi_locate_circle.h
 CMakeFiles/phi_locate_circle.dir/src/phi_locate_circle.cpp.o: ../src/phi_locate_circle.cpp
@@ -298,4 +301,7 @@ CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groo
 CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/sensor_msgs/image_encodings.h
 CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/std_msgs/Empty.h
 CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/std_msgs/Header.h
+CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/std_srvs/Empty.h
+CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/std_srvs/EmptyRequest.h
+CMakeFiles/phi_locate_circle.dir/src/phi_node_locate_circle.cpp.o: /opt/ros/groovy/include/std_srvs/EmptyResponse.h
 
